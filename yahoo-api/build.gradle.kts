@@ -17,6 +17,12 @@ repositories {
     mavenCentral()
 }
 
+tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+}
+
 dependencies {
     implementation(libs.lombok)
     implementation(libs.retrofit)
@@ -28,7 +34,8 @@ dependencies {
     implementation(libs.slf4j)
     implementation(libs.kotlin.logging)
     implementation(libs.detektFormatting)
-
+    implementation(libs.bundles.hoplite)
+    implementation(libs.bundles.jackson)
     testImplementation(libs.bundles.kotest)
 }
 
