@@ -12,6 +12,7 @@ slf4j = "1.7.32"
 kotest = "5.4.2"
 kotlin = "1.7.10"
 kotlin-serialization = "1.4.31"
+hoplite = "2.6.2"
 
 [libraries]
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -31,9 +32,13 @@ detektFormatting = { module = "io.gitlab.arturbosch.detekt:detekt-formatting", v
 kotest-runner = { module = "io.kotest:kotest-runner-junit5", version.ref = "kotest" }
 kotest-assertions = { module = "io.kotest:kotest-assertions-core-jvm", version.ref = "kotest" }
 kotest-property = { module = "io.kotest:kotest-property-jvm", version.ref = "kotest" }
+hoplite = { module = "com.sksamuel.hoplite:hoplite-core", version.ref = "hoplite" }
+hoptlite-toml = {module= "com.sksamuel.hoplite:hoplite-toml", version.ref = "hoplite" }
 
 [bundles]
 kotest = ["kotest-runner", "kotest-assertions", "kotest-property"]
+hoplite = ["hoplite", "hoptlite-toml"]
+jackson = ["jackson-dataformat", "jackson-module-kotlin"]
 
 [plugins]
 ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
