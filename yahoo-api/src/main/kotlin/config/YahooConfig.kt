@@ -2,7 +2,7 @@ package config
 
 import com.sksamuel.hoplite.ConfigAlias
 
-data class YahooSecrets(
+data class YahooConfig(
     @ConfigAlias("client_id")
     val clientId: String,
     @ConfigAlias("client_secret")

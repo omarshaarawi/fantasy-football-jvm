@@ -21,7 +21,9 @@ class YahooClient {
     private val log: KLogger = KotlinLogging.logger {}
 
     private val yahooApi by lazy { YahooServiceImpl.createYahooService() }
-    private val mapper: ObjectMapper = XmlMapper.builder().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+    private val mapper: ObjectMapper = XmlMapper
+        .builder()
+        .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         .addModules(kotlinModule()).build()
 
     fun getLeague(): LeagueResource? {
