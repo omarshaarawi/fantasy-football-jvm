@@ -46,10 +46,36 @@ data class PlayerResource(
     @JsonProperty("transaction_data")
     val transactionData: TransactionData?,
 
+    @XmlElement(name = "status")
+    val status: String?,
+
+    @XmlElement(name = "injury_note")
+    @JsonProperty("injury_note")
+    val injuryNote: String?,
+
+    // player_points
+    @XmlElement(name = "player_points")
+    @JsonProperty("player_points")
+    val playerPoints: PlayerPoints?,
+
+    //selected_position
+    @XmlElement(name = "selected_position")
+    @JsonProperty("selected_position")
+    val selectedPosition: SelectedPosition?
+
 ) {
+
+    data class SelectedPosition(
+        @XmlElement(name = "position")
+        val position: String?,
+    )
     data class PlayerName(
         @XmlElement(name = "full")
         val full: String,
+    )
+    data class PlayerPoints(
+        @XmlElement(name = "total")
+        val total: Double?,
     )
 
     data class TransactionData(

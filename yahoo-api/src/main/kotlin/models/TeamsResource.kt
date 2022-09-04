@@ -9,8 +9,12 @@ data class TeamsResource(
 
     @XmlElement(name = "team_key")
     @JsonProperty("team_key")
-
     var teamKey: String,
+
+    @XmlElement(name = "team_id")
+    @JsonProperty("team_id")
+    var teamId: Int,
+
     @XmlElement(name = "name")
     val name: String,
 
@@ -36,7 +40,7 @@ data class TeamsResource(
 
     @XmlElement(name = "team_points")
     @JsonProperty("team_points")
-    val teamPoints: TeamPointsResource,
+    val teamPoints: TeamPointsResource?,
 
     @XmlElement(name = "team_projected_points")
     @JsonProperty("team_projected_points")
@@ -46,6 +50,9 @@ data class TeamsResource(
     @XmlElement(name = "team_standings")
     @JsonProperty("team_standings")
     val teamStandings: TeamStandingsResource?,
+
+    @XmlElement(name = "roster")
+    var roster: RosterResource?
 ) {
 
     @XmlRootElement(name = "team_points")

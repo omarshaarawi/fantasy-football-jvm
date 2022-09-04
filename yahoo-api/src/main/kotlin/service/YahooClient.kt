@@ -7,8 +7,10 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper
 import com.fasterxml.jackson.module.kotlin.kotlinModule
 import models.LeagueResource
 import models.MatchupResource
+import models.PlayerResource
 import models.RosterResource
 import models.ScoreboardResource
+import models.TeamsResource
 import models.TransactionResource
 import mu.KLogger
 import mu.KotlinLogging
@@ -26,9 +28,14 @@ class YahooClient {
         .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
         .addModules(kotlinModule()).build()
 
-    fun getLeague(): LeagueResource? {
+    fun getLeague(): FantasyContentResource {
         val request = yahooApi.getLeague()
-        return throwIfError(request.execute()).league
+        return throwIfError(request.execute())
+    }
+
+    fun getAllLeagueResources(): FantasyContentResource {
+        val request = yahooApi.getAllLeagueResources()
+        return throwIfError(request.execute())
     }
 
     fun getScoreboard(): ScoreboardResource? {
@@ -54,6 +61,23 @@ class YahooClient {
     fun getTeamRoster(teamKey: Int): RosterResource? {
         val request = yahooApi.getTeamRoster(teamKey)
         return throwIfError(request.execute()).team?.roster
+    }
+
+    fun getTeams(): List<TeamsResource>? {
+        val request = yahooApi.getTeams()
+        return throwIfError(request.execute()).league?.teams
+    }
+    fun getTeamRosterStats(teamKey: Int): List<PlayerResource>? {
+        val request = yahooApi.getTeamRosterStats(teamKey)
+        return throwIfError(request.execute()).team?.roster?.players
+    }
+    fun getFilteredPlayers(positions: Positions?, status: Status? ): List<PlayerResource>? {
+        val request = yahooApi.getFilteredPlayers(positions, status)
+        return throwIfError(request.execute()).league?.players
+    }
+    fun getLeagueTeams(): LeagueResource? {
+        val request = yahooApi.getLeagueTeams()
+        return throwIfError(request.execute()).league
     }
 
     private fun throwIfError(response: Response<ResponseBody>): FantasyContentResource {

@@ -30,6 +30,11 @@ data class LeagueResource(
     @JsonProperty("end_date")
     val endDate: String,
 
+    // num_teams
+    @XmlElement(name = "num_teams")
+    @JsonProperty("num_teams")
+    val numTeams: Int,
+
     @XmlElement(name = "season")
     @JsonProperty("season")
     val season: String,
@@ -42,7 +47,15 @@ data class LeagueResource(
 
     @XmlElement(name = "transactions")
     @XmlElementWrapper(name = "transactions")
-    val transactions: List<TransactionResource>?
+    val transactions: List<TransactionResource>?,
+
+    @XmlElement(name = "teams")
+    @XmlElementWrapper(name = "teams")
+    val teams: List<TeamsResource>?,
+
+    @XmlElement(name = "players")
+    @XmlElementWrapper(name = "players")
+    val players: List<PlayerResource>?
 ) {
     data class StandingsResource(
         @XmlElement(name = "teams")
