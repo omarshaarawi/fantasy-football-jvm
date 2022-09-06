@@ -1,3 +1,11 @@
 formatting:
     Indentation:
       active: false
+    MaximumLineLength:
+        active: false
+complexity:
+  TooManyFunctions:
+    active: false
+style:
+  MaxLineLength:
+    active: false

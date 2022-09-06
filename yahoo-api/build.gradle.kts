@@ -41,7 +41,7 @@ dependencies {
 }
 
 detekt {
-    config = files("$projectDir/gradle/detekt.yml")
+    config = files("../gradle/detekt.yml")
     buildUponDefaultConfig = true
     parallel = true
 }

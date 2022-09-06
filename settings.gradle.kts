@@ -12,7 +12,6 @@ rootProject.name = "fantasy-football-jvm"
 include("yahoo-api")
 include("espn-api")
 
-
 plugins {
     `gradle-enterprise`
 }
