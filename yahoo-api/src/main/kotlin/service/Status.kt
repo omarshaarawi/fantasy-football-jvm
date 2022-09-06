@@ -5,7 +5,7 @@ enum class Status {
 
     FA, // (free agents only)
 
-    W, //(waivers only)
+    W, // (waivers only)
 
     T, // (all taken players)
 

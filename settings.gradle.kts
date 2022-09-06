@@ -11,3 +11,15 @@
 rootProject.name = "fantasy-football-jvm"
 include("yahoo-api")
 include("espn-api")
+
+
+plugins {
+    `gradle-enterprise`
+}
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}

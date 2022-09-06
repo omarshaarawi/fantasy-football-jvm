@@ -37,6 +37,13 @@ dependencies {
     implementation(libs.bundles.hoplite)
     implementation(libs.bundles.jackson)
     testImplementation(libs.bundles.kotest)
+    detektPlugins(libs.detektFormatting)
+}
+
+detekt {
+    config = files("$projectDir/gradle/detekt.yml")
+    buildUponDefaultConfig = true
+    parallel = true
 }
 
 publishing {
@@ -45,8 +52,8 @@ publishing {
             name = "GitHubPackages"
             url = uri("https://maven.pkg.github.com/omarshaarawi/fantasy-football-jvm")
             credentials {
-                username = project.findProperty("gpr.user") as String? ?: System.getenv("USERNAME")
-                password = project.findProperty("gpr.key") as String? ?: System.getenv("TOKEN")
+                username = project.findProperty("gpr.user") as String? ?: System.getenv("GIT_USERNAME")
+                password = project.findProperty("gpr.key") as String? ?: System.getenv("GITHUB_TOKEN")
             }
         }
     }

@@ -1,5 +1,6 @@
 package service
 
+import config.YahooConfig
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.GET
@@ -7,42 +8,47 @@ import retrofit2.http.Path
 
 interface YahooService {
 
-    @GET("fantasy/v2/league/nfl.l.1251422;out=scoreboard,standings,teams,transactions")
-    fun getAllLeagueResources(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id};out=scoreboard,standings,teams,transactions")
+    fun getAllLeagueResources(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    // LEAGUE
-    @GET("fantasy/v2/league/nfl.l.1251422")
-    fun getLeague(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}")
+    fun getLeague(@Path("id") id: String = leagueId): Call<ResponseBody>
 
+    @GET("fantasy/v2/league/nfl.l.{id}}/teams")
+    fun getLeagueTeams(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.1251422/teams")
-    fun getLeagueTeams(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}/scoreboard")
+    fun getScoreboards(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.1251422/scoreboard")
-    fun getScoreboards(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}/standings")
+    fun getStandings(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.1251422/standings")
-    fun getStandings(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}/transactions")
+    fun getTransactions(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.1251422/transactions")
-    fun getTransactions(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}/teams/roster")
+    fun getTeams(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.1251422/teams/roster")
-    fun getTeams(): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}/players/stats;type=week;week={week}")
+    fun getTeamPlayerStats(@Path("week") week: Int, @Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.1251422/players/stats;type=week;week={week}")
-    fun getTeamPlayerStats(@Path("week") week: Int): Call<ResponseBody>
+    @GET("fantasy/v2/team/nfl.l.{id}.t.{team_id}/matchups")
+    fun getTeamMatchup(@Path("team_id") teamId: Int, @Path("id") id: String = leagueId): Call<ResponseBody>
 
-    // Team
-    @GET("fantasy/v2/team/nfl.l.1251422.t.{team_id}/matchups")
-    fun getTeamMatchup(@Path("team_id") id: Int): Call<ResponseBody>
+    @GET("fantasy/v2/team/nfl.l.{id}.t.{team_id}/roster")
+    fun getTeamRoster(@Path("team_id") teamId: Int, @Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/team/nfl.l.1251422.t.{team_id}/roster")
-    fun getTeamRoster(@Path("team_id") id: Int): Call<ResponseBody>
+    @GET("https://fantasysports.yahooapis.com/fantasy/v2/league/nfl.l.{id}/players;sort_type=week;position={pos};status={status}")
+    fun getFilteredPlayers(
+        @Path("pos") positions: Positions?,
+        @Path("status") status: Status?,
+        @Path("id") id: String = leagueId
+    ): Call<ResponseBody>
 
-    @GET("https://fantasysports.yahooapis.com/fantasy/v2/league/nfl.l.1251422/players;sort_type=week;position={pos};status={status}")
-    fun getFilteredPlayers(@Path("pos") positions: Positions?, @Path("status") status: Status?): Call<ResponseBody>
+    @GET("fantasy/v2/team/nfl.l.{id}.t.{team_id}/roster/players/stats")
+    fun getTeamRosterStats(@Path("team_id") teamId: Int, @Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/team/nfl.l.1251422.t.{team_id}/roster/players/stats")
-    fun getTeamRosterStats(@Path("team_id") id: Int): Call<ResponseBody>
+    companion object {
+        val leagueId = YahooConfig.load().yahoo.leagueId
+    }
 }

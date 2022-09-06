@@ -58,7 +58,7 @@ data class PlayerResource(
     @JsonProperty("player_points")
     val playerPoints: PlayerPoints?,
 
-    //selected_position
+    // selected_position
     @XmlElement(name = "selected_position")
     @JsonProperty("selected_position")
     val selectedPosition: SelectedPosition?

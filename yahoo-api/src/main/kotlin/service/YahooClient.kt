@@ -71,7 +71,7 @@ class YahooClient {
         val request = yahooApi.getTeamRosterStats(teamKey)
         return throwIfError(request.execute()).team?.roster?.players
     }
-    fun getFilteredPlayers(positions: Positions?, status: Status? ): List<PlayerResource>? {
+    fun getFilteredPlayers(positions: Positions?, status: Status?): List<PlayerResource>? {
         val request = yahooApi.getFilteredPlayers(positions, status)
         return throwIfError(request.execute()).league?.players
     }
