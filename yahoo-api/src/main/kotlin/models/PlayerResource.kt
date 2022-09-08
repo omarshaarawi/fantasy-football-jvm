@@ -97,7 +97,11 @@ data class PlayerResource(
         // destination_team_name
         @XmlElement(name = "destination_team_name")
         @JsonProperty("destination_team_name")
-        val destinationTeamName: String?
+        val destinationTeamName: String?,
+
+        @XmlElement(name = "source_team_name")
+        @JsonProperty("source_team_name")
+        val sourceTeamName: String?
 
     )
 }
