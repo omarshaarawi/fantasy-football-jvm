@@ -24,7 +24,7 @@ jobs:
       packages: write
     steps:
       - name: Publish to GitHub Packages
-        run: gradle publish
+        run: gradle publish -p yahoo-api
         env:
           USERNAME: ${{ secrets.GIT_USERNAME }}
           TOKEN: ${{ secrets.GITHUB_TOKEN }}
