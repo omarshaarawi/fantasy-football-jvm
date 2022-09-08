@@ -74,7 +74,7 @@ data class TeamsResource(
 
         @XmlElement(name = "outcome_totals")
         @JsonProperty("outcome_totals")
-        var outcomeTotals: OutcomeTotalsResource,
+        var outcomeTotals: OutcomeTotalsResource
 
     ) {
         data class OutcomeTotalsResource(
@@ -88,7 +88,7 @@ data class TeamsResource(
             var ties: Int,
 
             @XmlElement(name = "percentage")
-            var percentage: Double,
+            var percentage: Double
         )
     }
 }

@@ -13,7 +13,6 @@ object YahooServiceImpl {
         .build()
 
     fun createYahooService(): YahooService {
-
         val retrofit = Retrofit.Builder()
             .client(client)
             .addConverterFactory(JacksonConverterFactory.create())
