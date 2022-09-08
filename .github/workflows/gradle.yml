@@ -38,8 +38,3 @@ jobs:
         env:
           GIT_USERNAME: omarshaarawi
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: upload artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: coach-bot
-          path: build/distributions/coach-bot.tar
