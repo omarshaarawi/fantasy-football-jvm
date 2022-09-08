@@ -27,28 +27,6 @@ data class TransactionResource(
     // Players
     @XmlElement(name = "players")
     @XmlElementWrapper(name = "players")
-    var players: List<PlayerResource>?,
+    var players: List<PlayerResource>?
 
-    // transaction_data
-    @XmlElement(name = "transaction_data")
-    @JsonProperty("transaction_data")
-    var transactionData: TransactionDataResource?
-) {
-    data class TransactionDataResource(
-        @XmlElement(name = "type")
-        var type: String,
-
-        @XmlElement(name = "source_type")
-        @JsonProperty("source_type")
-        var sourceType: String,
-
-        @XmlElement(name = "destination_type")
-        @JsonProperty("destination_type")
-        var destinationType: String,
-
-        @XmlElement(name = "destination_team_name")
-        @JsonProperty("destination_team_name")
-        var destinationTeamName: String
-
-    )
-}
+)

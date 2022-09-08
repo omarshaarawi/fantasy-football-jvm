@@ -67,28 +67,29 @@ data class PlayerResource(
 
     data class SelectedPosition(
         @XmlElement(name = "position")
-        val position: String?,
+        val position: String?
     )
+
     data class PlayerName(
         @XmlElement(name = "full")
-        val full: String,
+        val full: String
     )
+
     data class PlayerPoints(
         @XmlElement(name = "total")
-        val total: Double?,
+        val total: Double?
     )
 
     data class TransactionData(
         @XmlElement(name = "type")
-        val type: String,
+        val type: String?,
         @XmlElement(name = "source_type")
         @JsonProperty("source_type")
-        val sourceType: String,
+        val sourceType: String?,
         @XmlElement(name = "destination_type")
         @JsonProperty("destination_type")
-        val destinationType: String,
+        val destinationType: String?,
 
-// destination_team_key
         @XmlElement(name = "destination_team_key")
         @JsonProperty("destination_team_key")
         val destinationTeamKey: String?,
@@ -96,7 +97,7 @@ data class PlayerResource(
         // destination_team_name
         @XmlElement(name = "destination_team_name")
         @JsonProperty("destination_team_name")
-        val destinationTeamName: String?,
+        val destinationTeamName: String?
 
     )
 }
