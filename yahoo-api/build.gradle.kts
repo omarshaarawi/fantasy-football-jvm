@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.fantasy.football"
-//version = System.getenv("VERSION")
+version = System.getenv("VERSION")
 
 repositories {
     mavenCentral()
@@ -36,6 +36,7 @@ dependencies {
     implementation(libs.detektFormatting)
     implementation(libs.bundles.hoplite)
     implementation(libs.bundles.jackson)
+    implementation(libs.okhttp.logging)
     testImplementation(libs.bundles.kotest)
     detektPlugins(libs.detektFormatting)
 }

@@ -10,6 +10,7 @@ class BearerTokenClient : Authenticator {
 
     private val yahooAuthApi by lazy { YahooAuthServiceImpl().createAuthClient() }
     private val yahooConfig = YahooConfig.load()
+
     override fun authenticate(route: Route?, response: Response): Request? {
         val tokenResponse =
             yahooAuthApi.getToken(
@@ -19,7 +20,7 @@ class BearerTokenClient : Authenticator {
                 "oob",
                 yahooConfig.yahoo.refreshToken
             ).execute()
-        return response.request().newBuilder()
+        return response.request.newBuilder()
             .header("Authorization", "Bearer ${tokenResponse.body()?.accessToken}")
             .build()
     }
