@@ -13,6 +13,7 @@ kotest = "5.4.2"
 kotlin = "1.7.10"
 kotlin-serialization = "1.4.31"
 hoplite = "2.6.2"
+okhttp = "4.9.3"
 
 [libraries]
 kotlin-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
@@ -23,6 +24,7 @@ retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit
 retrofit-jackson = { module = "com.squareup.retrofit2:converter-jackson", version.ref = "retrofit" }
 retrofit-jaxb = { module = "com.squareup.retrofit2:converter-jaxb", version.ref = "retrofit" }
 retrofit-kotlinx-serialization = { module = "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter", version.ref = "retrofitKotlin" }
+okhttp-logging = { module = "com.squareup.okhttp3:logging-interceptor", version.ref = "okhttp" }
 kotlin-logging = { module = "io.github.microutils:kotlin-logging", version.ref = "kotlin-logging" }
 kotlinx-serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
 lombok = { module = "org.projectlombok:lombok", version.ref = "lombok" }

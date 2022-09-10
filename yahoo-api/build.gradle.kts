@@ -36,6 +36,7 @@ dependencies {
     implementation(libs.detektFormatting)
     implementation(libs.bundles.hoplite)
     implementation(libs.bundles.jackson)
+    implementation(libs.okhttp.logging)
     testImplementation(libs.bundles.kotest)
     detektPlugins(libs.detektFormatting)
 }
