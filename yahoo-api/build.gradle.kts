@@ -11,7 +11,7 @@ plugins {
 }
 
 group = "com.fantasy.football"
-//version = System.getenv("VERSION")
+version = System.getenv("VERSION")
 
 repositories {
     mavenCentral()
