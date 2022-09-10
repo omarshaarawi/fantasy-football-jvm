@@ -61,7 +61,12 @@ data class PlayerResource(
     // selected_position
     @XmlElement(name = "selected_position")
     @JsonProperty("selected_position")
-    val selectedPosition: SelectedPosition?
+    val selectedPosition: SelectedPosition?,
+
+    // editorial_team_full_name
+    @XmlElement(name = "editorial_team_full_name")
+    @JsonProperty("editorial_team_full_name")
+    val editorialTeamFullName: String?
 
 ) {
 
