@@ -48,6 +48,13 @@ interface YahooService {
     @GET("fantasy/v2/team/nfl.l.{id}.t.{team_id}/roster/players/stats")
     fun getTeamRosterStats(@Path("team_id") teamId: Int, @Path("id") id: String = leagueId): Call<ResponseBody>
 
+    @GET("fantasy/v2/league/nfl.l.{id}/players;status=A;position=O;sort=PTS;sort_type=week;start={start}/stats;type=week;week={week}")
+    fun getAvailablePlayers(
+        @Path("week") week: Int,
+        @Path("start") start: Int,
+        @Path("id") id: String = leagueId
+    ): Call<ResponseBody>
+
     companion object {
         val leagueId = YahooConfig.load().yahoo.leagueId
     }
