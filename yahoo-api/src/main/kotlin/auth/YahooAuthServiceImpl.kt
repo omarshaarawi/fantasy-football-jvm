@@ -14,7 +14,7 @@ class YahooAuthServiceImpl {
 
     init {
         val logging = HttpLoggingInterceptor()
-        logging.setLevel(HttpLoggingInterceptor.Level.HEADERS)
+        logging.setLevel(HttpLoggingInterceptor.Level.BASIC)
         client = OkHttpClient.Builder()
             .addInterceptor(logging)
             .build()
