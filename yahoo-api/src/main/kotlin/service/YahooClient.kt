@@ -80,8 +80,8 @@ class YahooClient {
         return throwIfError(request.execute()).league
     }
 
-    fun getAvailablePlayers(week: String): List<PlayerResource>? {
-        val request = yahooApi.getAvailablePlayers(week)
+    fun getAvailablePlayers(week: Int, start: Int): List<PlayerResource>? {
+        val request = yahooApi.getAvailablePlayers(week, start)
         return throwIfError(request.execute()).league!!.players
     }
 
