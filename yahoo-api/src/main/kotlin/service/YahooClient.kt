@@ -80,6 +80,11 @@ class YahooClient {
         return throwIfError(request.execute()).league
     }
 
+    fun getAvailablePlayers(week: String): List<PlayerResource>? {
+        val request = yahooApi.getAvailablePlayers(week)
+        return throwIfError(request.execute()).league!!.players
+    }
+
     private fun throwIfError(response: Response<ResponseBody>): FantasyContentResource {
         if (!response.isSuccessful) {
             log.error { "Error: ${response.errorBody()?.string()}" }
