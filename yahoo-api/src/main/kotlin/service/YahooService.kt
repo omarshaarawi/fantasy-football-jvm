@@ -17,8 +17,8 @@ interface YahooService {
     @GET("fantasy/v2/league/nfl.l.{id}/teams")
     fun getLeagueTeams(@Path("id") id: String = leagueId): Call<ResponseBody>
 
-    @GET("fantasy/v2/league/nfl.l.{id}/scoreboard")
-    fun getScoreboards(@Path("id") id: String = leagueId): Call<ResponseBody>
+    @GET("fantasy/v2/league/nfl.l.{id}/scoreboard;week={week}")
+    fun getScoreboards(@Path("id") id: String = leagueId, @Path("week") week: Int = 0): Call<ResponseBody>
 
     @GET("fantasy/v2/league/nfl.l.{id}/standings")
     fun getStandings(@Path("id") id: String = leagueId): Call<ResponseBody>
