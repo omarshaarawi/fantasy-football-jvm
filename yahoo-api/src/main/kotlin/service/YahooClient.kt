@@ -38,8 +38,8 @@ class YahooClient {
         return throwIfError(request.execute())
     }
 
-    fun getScoreboard(): ScoreboardResource? {
-        val request = yahooApi.getScoreboards()
+    fun getScoreboard(week: Int = 0): ScoreboardResource? {
+        val request = yahooApi.getScoreboards(week = week)
         return throwIfError(request.execute()).league?.scoreboard
     }
 
